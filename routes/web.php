@@ -29,3 +29,10 @@ Class MyClass{
 }
 Route::get('myClass', 'ImplicitController@index');
 Route::get('myClass/{id}', 'ImplicitController@show');
+
+
+/*
+ * Cookie Implementations
+ */
+Route::get('cookie/set', 'CookieController@setCookie');
+Route::get('cookie/get', 'CookieController@getCookie');
