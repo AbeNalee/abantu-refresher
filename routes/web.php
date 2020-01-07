@@ -36,3 +36,11 @@ Route::get('myClass/{id}', 'ImplicitController@show');
  */
 Route::get('cookie/set', 'CookieController@setCookie');
 Route::get('cookie/get', 'CookieController@getCookie');
+
+/*
+ * Redirecting to route actions
+ */
+Route::get('rr', 'RedirectController@index');
+Route::get('redirect', function() {
+   return redirect()->action('RedirectController@index');
+});

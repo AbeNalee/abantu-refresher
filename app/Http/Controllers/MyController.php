@@ -13,7 +13,7 @@ class MyController extends Controller
      */
     public function index()
     {
-        echo "index";
+        return response()->json(['name' => 'Abantu', 'allow' => 'yes']);
     }
 
     /**
@@ -21,9 +21,10 @@ class MyController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        echo "create";
+        return response("Heyyyyyyy", 200)
+            ->withCookie('name', 'Refresher');
     }
 
     /**
