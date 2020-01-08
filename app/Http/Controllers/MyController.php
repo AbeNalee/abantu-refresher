@@ -13,7 +13,7 @@ class MyController extends Controller
      */
     public function index()
     {
-        return response()->json(['name' => 'Abantu', 'allow' => 'yes']);
+        return view('people');
     }
 
     /**
@@ -46,7 +46,7 @@ class MyController extends Controller
      */
     public function show($id)
     {
-        echo "show";
+        return response()->json(['name' => 'Abantu', 'allow' => 'yes']);
     }
 
     /**
