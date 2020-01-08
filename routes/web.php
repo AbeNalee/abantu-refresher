@@ -1,5 +1,5 @@
 <?php
-
+use Illuminate\Support\Facades\Mail;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -45,3 +45,11 @@ Route::get('redirect', function() {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+/*
+ * Testing mails
+ */
+Route::get('/mail', function (){
+    Mail::to('user@email.com')->send(new \App\Mail\WelcomeEmail());
+   return new \App\Mail\WelcomeEmail();
+});
