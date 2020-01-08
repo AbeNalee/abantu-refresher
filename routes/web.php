@@ -12,14 +12,14 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('refresher');
 });
 
 /*
  * Testing resource controllers
  * Checking routes that access resources
  */
-Route::resource('my', 'MyController');
+Route::resource('person', 'MyController');
 
 /*
  * Constructor and method injection
