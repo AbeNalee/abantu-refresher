@@ -1,6 +1,4 @@
-@extends('layouts')
-
-@section('title', 'Edit Person Details')
+@extends('layouts.app')
 
 @section('content')
 
