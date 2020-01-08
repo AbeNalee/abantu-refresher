@@ -7,7 +7,7 @@
     <a href="/people/create">Add Person</a>
     <ul>
         @forelse($people as $person)
-            <li>{{ $person->name }}||{{ $person->age }}</li>
+            <a href="people/{{$person->id}}"><li>{{ $person->name }}||{{ $person->age }}</li></a>
 
         @empty
             <li>No People available</li>

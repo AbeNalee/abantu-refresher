@@ -39,10 +39,7 @@ class MyController extends Controller
             'name' => 'required',
             'age' => 'required|integer'
         ]);
-        $person = new Person();
-        $person->name = request('name');
-        $person->age = request('age');
-        $person->save();
+        Person::create($data);
 
         return redirect('/people');
     }
@@ -55,8 +52,9 @@ class MyController extends Controller
      */
     public function show($id)
     {
+        $person = Person::find($id);
         return response()
-            ->json(['name' => 'Abantu', 'allow' => 'yes'])
+            ->json($person)
             ->withCookie('name', 'Abantu');
     }
 
