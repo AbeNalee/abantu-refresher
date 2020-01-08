@@ -42,3 +42,6 @@ Route::get('rr', 'RedirectController@index');
 Route::get('redirect', function() {
    return redirect()->action('RedirectController@index');
 });
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
