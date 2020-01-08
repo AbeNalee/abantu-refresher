@@ -66,12 +66,13 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        User::create([
+        Mail::to($data['email'])->send(new WelcomeEmail());
+
+        return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
 
-        return Mail::to($data['email'])->send(new WelcomeEmail());
     }
 }
