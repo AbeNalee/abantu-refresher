@@ -11,15 +11,13 @@
 |
 */
 
-Route::get('/', function () {
-    return view('refresher');
-});
+Route::view('/', 'refresher');
 
 /*
  * Testing resource controllers
  * Checking routes that access resources
  */
-Route::resource('person', 'MyController');
+Route::resource('people', 'MyController');
 
 /*
  * Constructor and method injection
