@@ -13,7 +13,12 @@ class MyController extends Controller
      */
     public function index()
     {
-        return view('people');
+        $people = [
+            'Person 1',
+            'Person 2',
+            'Person 3'
+        ];
+        return view('people', compact('people'));
     }
 
     /**
@@ -21,10 +26,9 @@ class MyController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
+    public function create()
     {
-        return response("Heyyyyyyy", 200)
-            ->withCookie('name', 'Refresher');
+        return view('add');
     }
 
     /**
@@ -46,7 +50,9 @@ class MyController extends Controller
      */
     public function show($id)
     {
-        return response()->json(['name' => 'Abantu', 'allow' => 'yes']);
+        return response()
+            ->json(['name' => 'Abantu', 'allow' => 'yes'])
+            ->withCookie('name', 'Abantu');
     }
 
     /**
