@@ -8,7 +8,7 @@
     <ul>
         @forelse($people as $person)
             <a href="people/{{$person->id}}"><li>{{ $person->name }}||{{ $person->age }}</li></a>
-
+            <a href="people/{{$person->id}}/edit">Edit</a>
         @empty
             <li>No People available</li>
         @endforelse

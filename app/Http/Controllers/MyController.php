@@ -50,9 +50,8 @@ class MyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Person $person)
     {
-        $person = Person::find($id);
         return response()
             ->json($person)
             ->withCookie('name', 'Abantu');
@@ -64,9 +63,9 @@ class MyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Person $person)
     {
-        echo "edit";
+        return view('person.edit', compact('person'));
     }
 
     /**
@@ -76,9 +75,15 @@ class MyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Person $person)
     {
-        echo "update";
+        $data = request()->validate([
+            'name' => 'required',
+            'age' => 'required|integer'
+        ]);
+        $person->update($data);
+
+        return redirect('/people');
     }
 
     /**
