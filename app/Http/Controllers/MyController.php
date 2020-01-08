@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Person;
 
 class MyController extends Controller
 {
@@ -13,12 +13,8 @@ class MyController extends Controller
      */
     public function index()
     {
-        $people = [
-            'Person 1',
-            'Person 2',
-            'Person 3'
-        ];
-        return view('people', compact('people'));
+        $people = Person::all();
+        return view('person.index', compact('people'));
     }
 
     /**
@@ -28,7 +24,7 @@ class MyController extends Controller
      */
     public function create()
     {
-        return view('add');
+        return view('person.create');
     }
 
     /**
@@ -37,9 +33,18 @@ class MyController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store()
     {
-        echo "store";
+        $data = request()->validate([
+            'name' => 'required',
+            'age' => 'required|integer'
+        ]);
+        $person = new Person();
+        $person->name = request('name');
+        $person->age = request('age');
+        $person->save();
+
+        return redirect('/people');
     }
 
     /**
