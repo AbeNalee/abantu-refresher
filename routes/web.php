@@ -53,3 +53,7 @@ Route::get('/mail', function (){
     Mail::to('user@email.com')->send(new \App\Mail\WelcomeEmail());
    return new \App\Mail\WelcomeEmail();
 });
+
+Route::get('/landing-page', function(){
+    return view('site.landing.index');
+});
